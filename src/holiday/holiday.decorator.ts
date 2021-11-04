@@ -1,4 +1,10 @@
-import { Inject, Injectable, InternalServerErrorException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Inject,
+  Injectable,
+  InternalServerErrorException,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import IEnricoService, { EnricoService } from '../third_parties/enrico.service';
 import IHolidayRepository, { HolidayRepository } from './repositories/holiday.repository';
@@ -58,7 +64,7 @@ export class HolidayRepositoryWithEnrico implements HolidayDecorator {
       });
     }).catch(function(error) {
       if (error != null) {
-        throw new InternalServerErrorException('Enrico api not responding');
+        throw new NotFoundException(error.error);
       }
     });
 

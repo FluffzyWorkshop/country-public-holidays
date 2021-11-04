@@ -1,7 +1,13 @@
 import { InjectRepository } from '@nestjs/typeorm';
 import ICountryRepository, { CountryRepository } from './repositories/country.repository';
 import { Country, ICountry } from './entities/country.entity';
-import { Inject, Injectable, InternalServerErrorException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Inject,
+  Injectable,
+  InternalServerErrorException,
+  NotFoundException,
+} from '@nestjs/common';
 import IEnricoService, { EnricoService } from '../third_parties/enrico.service';
 
 // CountryDecorator
@@ -33,7 +39,7 @@ export class CountryRepositoryWithEnrico implements CountryDecorator {
       });
     }).catch(function(error) {
       if (error != null) {
-        throw new InternalServerErrorException('Enrico api not responding');
+        throw new NotFoundException(error.error);
       }
     });
 
