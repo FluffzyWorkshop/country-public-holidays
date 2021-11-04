@@ -19,7 +19,7 @@ require('dotenv').config();
     database: process.env.DB_DATABASE,
     autoLoadEntities: true,
     synchronize: true,
-    logging: true,
+    keepConnectionAlive: true,
     entities: [Country, Holiday, HolidayName],
   }), CountryModule, HolidayModule],
 })
