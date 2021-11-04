@@ -15,8 +15,6 @@ export class CountryController {
     isArray: true,
     description: 'Holidays of a year grouped by month',
   })
-
-
   index() {
     return this.countryService.index();
   }
