@@ -38,5 +38,4 @@ export class HolidayRepository extends Repository<Holiday> implements IHolidayRe
       end_at: MoreThanOrEqual(date.toLocaleDateString('sv-SE')),
     });
   }
-
 }
