@@ -3,7 +3,7 @@ import { Country, ICountry } from '../entities/country.entity';
 
 // ICountryRepository
 export default interface ICountryRepository {
-  IsExist(): Promise<boolean>
+  isExist(): Promise<boolean>
   createCountries(countries: Country[])
   getCountries(): Promise<ICountry[]>;
   getCountryByCode(code: string): Promise<ICountry>
@@ -13,7 +13,7 @@ export default interface ICountryRepository {
 @EntityRepository(Country)
 export class CountryRepository extends Repository<Country> implements ICountryRepository {
 
-  async IsExist(): Promise<boolean> {
+  async isExist(): Promise<boolean> {
     return await this.count() > 0;
   }
 

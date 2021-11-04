@@ -41,7 +41,7 @@ export class CountryRepositoryWithEnrico implements CountryDecorator {
   }
 
   async getCountries(): Promise<Country[]> {
-    if (!await this.countryRepository.IsExist()) {
+    if (!await this.countryRepository.isExist()) {
       await this.createCountries();
     }
     return this.countryRepository.getCountries();
